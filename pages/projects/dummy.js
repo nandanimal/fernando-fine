@@ -31,6 +31,7 @@ export default function ProjectDetailPage() {
                     name="description"
                     content={`${project.name} – ${project.description}`}
                 />
+                <meta property="og:image" content={project.hero} />
             </Head>
 
             <article className="min-h-screen bg-white text-slate-900">

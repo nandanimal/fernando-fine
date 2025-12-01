@@ -1,5 +1,6 @@
 import Head from "next/head";
 import ProjectMedia from "@/components/ProjectMedia";
+import ProjectPager from "@/components/ProjectPager";
 
 const project = {
     name: "Calcul8r",
@@ -31,6 +32,7 @@ export default function ProjectDetailPage() {
                     name="description"
                     content={`${project.name} – ${project.description}`}
                 />
+                <meta property="og:image" content={project.hero} />
             </Head>
 
             <article className="min-h-screen text-slate-900 mt-16">
@@ -200,6 +202,7 @@ export default function ProjectDetailPage() {
                             caption="Quick walkthrough of posting a calculation and seeing it land in the feed."
                         /> */}
                     </section>
+                    <ProjectPager currentSlug={project.slug} />
                 </main>
             </article>
         </>

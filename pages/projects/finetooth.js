@@ -1,5 +1,6 @@
 import Head from "next/head";
 import ProjectMedia from "@/components/ProjectMedia";
+import ProjectPager from "@/components/ProjectPager";
 
 const project = {
     name: "Finetooth",
@@ -35,6 +36,7 @@ export default function ProjectDetailPage() {
                     name="description"
                     content={`${project.name} – ${project.description}`}
                 />
+                <meta property="og:image" content={project.hero} />
             </Head>
 
             <article className="min-h-screen text-slate-900 mt-16">
@@ -99,6 +101,7 @@ export default function ProjectDetailPage() {
                             </a>
                         </h2>
                     </section>
+                    <ProjectPager currentSlug={project.slug} />
                 </main>
             </article>
         </>

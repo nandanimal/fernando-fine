@@ -18,6 +18,7 @@ export default function ProjectsPage() {
                     name="description"
                     content="Selected projects by Fernando Fine"
                 />
+                <meta property="og:image" content="/og-image.png" />
             </Head>
 
             <div className="projects-container relative min-h-screen w-full z-10 px-6 py-16 space-y-8 pt-28">

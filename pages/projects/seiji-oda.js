@@ -1,5 +1,6 @@
 import Head from "next/head";
 import ProjectMedia from "@/components/ProjectMedia";
+import ProjectPager from "@/components/ProjectPager";
 
 const project = {
     name: "Seiji Oda",
@@ -31,6 +32,7 @@ export default function ProjectDetailPage() {
                     name="description"
                     content={`${project.name} – ${project.description}`}
                 />
+                <meta property="og:image" content={project.hero} />
             </Head>
 
             <article className="min-h-screen text-slate-900 mt-16">
@@ -186,6 +188,8 @@ export default function ProjectDetailPage() {
                         <h3 className="text-xl mt-16">Result</h3>
                         <video src="/p_vid_1_v3.webm" controls />
                     </section>
+                    <ProjectPager currentSlug={project.slug} />
+
                 </main>
             </article>
         </>

@@ -29,6 +29,7 @@ export default function Home() {
                     name="description"
                     content="Fernando Fine Grad Application Website"
                 />
+                <meta property="og:image" content="/og-image.png" />
             </Head>
             <div ref={pageRef}>
                 {/* BLUR THIS */}
