@@ -33,7 +33,7 @@ export default function ProjectDetailPage() {
                 />
             </Head>
 
-            <article className="min-h-screen bg-white text-slate-900">
+            <article className="min-h-screen text-slate-900 mt-16">
                 <header className="mx-auto l px-6 pb-12 pt-6 space-y-8">
                     <div className="grid grid-cols-2 sm:grid-cols-10 gap-4 sm:gap-6 items-baseline text-xs uppercase tracking-[0.08em] text-slate-500">
                         <div className="col-span-1 sm:col-span-2">Project</div>

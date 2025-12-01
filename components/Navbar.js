@@ -8,8 +8,8 @@ const Navbar = () => {
                 <div className="nav-content w-full flex justify-between text-xl font-heading p-6">
                     <Link href="/">Fernando Fine</Link>
                     <div className="flex flex-row gap-4">
-                        <Link href="/">About</Link>
-                        <Link href="/">Projects</Link>
+                        <Link href="/about">About</Link>
+                        <Link href="/projects">Projects</Link>
                     </div>
                 </div>
             </div>

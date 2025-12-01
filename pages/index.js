@@ -8,89 +8,7 @@ import {
 } from "framer-motion";
 import { useRef, useState } from "react";
 import Link from "next/link";
-
-const projects = [
-    {
-        id: 1,
-        name: "Calcul8r",
-        description: "Absurdist media art meets social media experiment",
-        tools: "Figma, Next.js, PostgreSQL, Auth0",
-        year: "2025",
-        slug: "/projects/calcul8r",
-        cover: "/calc_cover.png",
-        vidPreview: "",
-    },
-    {
-        id: 2,
-        name: "Ruby Red",
-        description: "Musical artist project",
-        tools: "Ableton Live, Adobe CC, Lightkey",
-        year: "2018 –",
-        slug: "/projects/ruby",
-        cover: "/ruby_cover.png",
-        vidPreview: "/roots_trimmed.mov",
-    },
-    {
-        id: 3,
-        name: "Seiji Oda",
-        description: "ML vision explorations",
-        tools: "Python, JS, Max for Live, MediaPipe, Mido",
-        year: "2024",
-        slug: "/projects/seiji-oda",
-        cover: "/seiji_cover.gif",
-        vidPreview: "",
-    },
-    {
-        id: 4,
-        name: "Plural",
-        description: "AI learning platform",
-        tools: "Figma, React, React Native",
-        year: "2023",
-        slug: "/projects/plural",
-        cover: "/plural_cover.png",
-        vidPreview: "",
-    },
-    {
-        id: 5,
-        name: "Miro",
-        description: "Next gen microfluidics device",
-        tools: "C++",
-        year: "2018",
-        slug: "/projects/miro",
-        cover: "/miro_cover.png",
-        vidPreview: "",
-    },
-    {
-        id: 6,
-        name: "Soulection / 10 Years of Apple Music",
-        description: "Internet radio station",
-        tools: "Next.js, Typescript, Supabase, Soundcloud API",
-        year: "2025",
-        slug: "/projects/soulection-10-years-of-apple-music",
-        cover: "/soulection_cover.png",
-        vidPreview: "/soulection.mp4",
-    },
-    {
-        id: 7,
-        name: "Front End For All",
-        description: "Aspiring web developer community",
-        tools: "HTML/CSS, React, Adobe Illustrator",
-        year: "2020",
-        slug: "/projects/fefa",
-        cover: "/fefa_cover.png",
-        vidPreview: "",
-    },
-    {
-        id: 8,
-        name: "Finetooth.dev",
-        description: "Web dev and design studio",
-        tools: "",
-        year: "2021 –",
-        slug: "/projects/finetooth",
-        cover: "/finetooth_cover.png",
-        vidPreview: "/finetooth_demo_2.mp4",
-    },
-];
+import { projects } from "@/data/projects";
 
 export default function Home() {
     const pageRef = useRef(null);
@@ -125,7 +43,7 @@ export default function Home() {
                                 <img
                                     src="/fern.png"
                                     alt="fernando fine"
-                                    className="max-w-[72px]"
+                                    className="max-w-[72px] rounded-sm"
                                 />
                             </div>
                             <div className="spacer row-span-1"></div>
