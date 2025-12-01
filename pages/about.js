@@ -13,7 +13,7 @@ const about = () => {
                 />
                 <meta property="og:image" content="/og-image.png" />
             </Head>
-            <div className="space-y-6 mt-16 p-6">
+            <div className="space-y-6 mt-16 p-6 max-w-4xl mx-auto">
                 <img
                     src="/fern.png"
                     alt="fernando fine"
@@ -49,8 +49,7 @@ const about = () => {
                     practice today, informing my ability to design experiments
                     and my propensity for working with novel technologies. I
                     have a bachelor’s degree in Neuroscience from UCLA, where I
-                    focused on (the science behind) learning, memory, and
-                    sleep.{" "}
+                    focused on (the science behind) learning, memory, and sleep.{" "}
                 </p>
                 <p>
                     Outside of work, I make music as part of{" "}
