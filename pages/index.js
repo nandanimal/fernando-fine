@@ -1,78 +1,401 @@
-import Image from "next/image";
-import { Geist, Geist_Mono } from "next/font/google";
+"use client";
+import Head from "next/head";
+import {
+    motion,
+    useScroll,
+    useTransform,
+    AnimatePresence,
+} from "framer-motion";
+import { useRef, useState } from "react";
+import Link from "next/link";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const projects = [
+    {
+        id: 1,
+        name: "Calcul8r",
+        description: "Absurdist media art meets social media experiment",
+        tools: "Figma, Next.js, PostgreSQL, Auth0",
+        year: "2025",
+        slug: "/projects/calcul8r",
+        cover: "/calc_cover.png",
+        vidPreview: "",
+    },
+    {
+        id: 2,
+        name: "Ruby Red",
+        description: "Musical artist project",
+        tools: "Ableton Live, Adobe CC, Lightkey",
+        year: "2018 –",
+        slug: "/projects/ruby",
+        cover: "/ruby_cover.png",
+        vidPreview: "/roots_trimmed.mov",
+    },
+    {
+        id: 3,
+        name: "Seiji Oda",
+        description: "ML vision explorations",
+        tools: "Python, JS, Max for Live, MediaPipe, Mido",
+        year: "2024",
+        slug: "/projects/seiji-oda",
+        cover: "/seiji_cover.gif",
+        vidPreview: "",
+    },
+    {
+        id: 4,
+        name: "Plural",
+        description: "AI learning platform",
+        tools: "Figma, React, React Native",
+        year: "2023",
+        slug: "/projects/plural",
+        cover: "/plural_cover.png",
+        vidPreview: "",
+    },
+    {
+        id: 5,
+        name: "Miro",
+        description: "Next gen microfluidics device",
+        tools: "C++",
+        year: "2018",
+        slug: "/projects/miro",
+        cover: "/miro_cover.png",
+        vidPreview: "",
+    },
+    {
+        id: 6,
+        name: "Soulection / 10 Years of Apple Music",
+        description: "Internet radio station",
+        tools: "Next.js, Typescript, Supabase, Soundcloud API",
+        year: "2025",
+        slug: "/projects/soulection-10-years-of-apple-music",
+        cover: "/soulection_cover.png",
+        vidPreview: "/soulection.mp4",
+    },
+    {
+        id: 7,
+        name: "Front End For All",
+        description: "Aspiring web developer community",
+        tools: "HTML/CSS, React, Adobe Illustrator",
+        year: "2020",
+        slug: "/projects/fefa",
+        cover: "/fefa_cover.png",
+        vidPreview: "",
+    },
+    {
+        id: 8,
+        name: "Finetooth.dev",
+        description: "Web dev and design studio",
+        tools: "",
+        year: "2021 –",
+        slug: "/projects/finetooth",
+        cover: "/finetooth_cover.png",
+        vidPreview: "/finetooth_demo_2.mp4",
+    },
+];
 
 export default function Home() {
-  return (
-    <div
-      className={`${geistSans.className} ${geistMono.className} flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black`}
-    >
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the index.js file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs/pages/getting-started?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
+    const pageRef = useRef(null);
+    const [viewMode, setViewMode] = useState("gallery");
+    const [hoveredId, setHoveredId] = useState(null);
+    const { scrollYProgress } = useScroll();
+    const blurValue = useTransform(
+        scrollYProgress,
+        [0, 0.35, 0.5],
+        ["blur(0px)", "blur(6px)", "blur(16px)"]
+    );
+
+    return (
+        <>
+            <Head>
+                <title>Fernando Fine</title>
+                <meta
+                    name="description"
+                    content="Fernando Fine Grad Application Website"
+                />
+            </Head>
+            <div ref={pageRef}>
+                {/* BLUR THIS */}
+                <motion.div
+                    className="blurb-container min-h-screen w-full fixed top-0 -z-10 flex items-center justify-center"
+                    style={{ filter: blurValue }}
+                >
+                    <div className="blurb-itself grid grid-rows-2 gap-8 max-w-3xl mx-auto">
+                        {/* Top row */}
+                        <div className="row grid-cols-2 grid gap-16">
+                            <div className="img-container flex justify-end items-end row-span-1">
+                                <img
+                                    src="/fern.png"
+                                    alt="fernando fine"
+                                    className="max-w-[72px]"
+                                />
+                            </div>
+                            <div className="spacer row-span-1"></div>
+                        </div>
+                        {/* Bottom row */}
+                        <div className="row grid grid-cols-2 gap-16">
+                            <div className="name font-heading text-2xl row-span-1 flex justify-end">
+                                Fernando Fine
+                            </div>
+                            <div className="name  text-2xl flex flex-col gap-4">
+                                <div className="font-heading">
+                                    Cross-disciplinary design engineer with a
+                                    passion for emerging technologies.
+                                </div>
+                                <p className="font-body text-base">
+                                    Currently running{" "}
+                                    <a
+                                        href="www.finetooth.dev"
+                                        target="_blank"
+                                        className="text-blue-500"
+                                    >
+                                        finetooth.dev
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* scroll prompt */}
+                    <motion.div
+                        className="absolute bottom-8"
+                        initial={{ opacity: 0, y: 16 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{
+                            delay: 1,
+                            duration: 1,
+                            ease: "easeInOut",
+                        }}
+                    >
+                        <div className="font-heading text-3xl">
+                            Scroll to discover projects
+                        </div>
+                    </motion.div>
+                </motion.div>
+
+                {/* Grid view background */}
+                <AnimatePresence>
+                    {viewMode === "gallery" && hoveredId && (
+                        <motion.div
+                            key={hoveredId}
+                            className="w-full h-screen fixed z-0 top-0 pointer-events-none text-6xl xl:text-8xl font-heading flex flex-col gap-4 justify-between p-2"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.2 }}
+                        >
+                            {(() => {
+                                const project = projects.find(
+                                    (p) => p.id === hoveredId
+                                );
+                                if (!project) return null;
+                                return (
+                                    <>
+                                        <div className="flex flex-row justify-between">
+                                            <div>{project.name}</div>
+                                            <div>{project.id}</div>
+                                        </div>
+                                        <div className="">
+                                            {project.description}
+                                        </div>
+                                        <div className="">{project.tools}</div>
+                                        <div className="self-end">
+                                            {project.year}
+                                        </div>
+                                    </>
+                                );
+                            })()}
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+
+                {/* PROJECTS */}
+                <div className="projects-container relative mt-[100svh] min-h-screen w-full z-10 px-6 py-16 space-y-8">
+                    {/* TOGGLE */}
+                    <div className="flex items-center flex items-end w-full gap-8 font-heading md:text-3xl">
+                        <button
+                            className={`rounded-sm  cursor-pointer hover:opacity-80 transition ${
+                                viewMode === "gallery"
+                                    ? "text-black"
+                                    : "text-black/40"
+                            }`}
+                            onClick={() => setViewMode("gallery")}
+                        >
+                            Gallery view
+                        </button>
+                        <button
+                            className={`rounded-sm   cursor-pointer hover:opacity-80 transition ${
+                                viewMode === "list"
+                                    ? "text-black"
+                                    : "text-black/40"
+                            }`}
+                            onClick={() => setViewMode("list")}
+                        >
+                            List view
+                        </button>
+                    </div>
+
+                    <AnimatePresence mode="wait">
+                        {viewMode === "gallery" ? (
+                            <motion.div
+                                key="gallery"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                transition={{ duration: 0.25 }}
+                                className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+                            >
+                                {projects.map((project) => {
+                                    const isHovered = hoveredId === project.id;
+                                    const dimmed = hoveredId && !isHovered;
+                                    return (
+                                        <Link
+                                            href={project.slug}
+                                            key={project.id}
+                                        >
+                                            <motion.article
+                                                className="group relative overflow-hidden rounded-sm bg-white/80 backdrop-blur"
+                                                onMouseEnter={() =>
+                                                    setHoveredId(project.id)
+                                                }
+                                                onMouseLeave={() =>
+                                                    setHoveredId(null)
+                                                }
+                                                style={{
+                                                    opacity: dimmed ? 0.2 : 1,
+                                                }}
+                                                animate={{
+                                                    scale: isHovered ? 1.02 : 1,
+                                                }}
+                                                transition={{
+                                                    type: "spring",
+                                                    stiffness: 260,
+                                                    damping: 22,
+                                                }}
+                                            >
+                                                <div className="aspect-[16/9] bg-slate-100 relative overflow-hidden">
+                                                    {project.cover ? (
+                                                        <img
+                                                            src={project.cover}
+                                                            alt={project.name}
+                                                            className="h-full w-full object-cover"
+                                                        />
+                                                    ) : (
+                                                        <div className="h-full w-full bg-slate-200" />
+                                                    )}
+                                                    <AnimatePresence>
+                                                        {project.vidPreview &&
+                                                            isHovered && (
+                                                                <motion.video
+                                                                    key={`${project.id}-video`}
+                                                                    src={
+                                                                        project.vidPreview
+                                                                    }
+                                                                    autoPlay
+                                                                    muted
+                                                                    loop
+                                                                    playsInline
+                                                                    preload="metadata"
+                                                                    className="absolute inset-0 h-full w-full object-cover"
+                                                                    initial={{
+                                                                        opacity: 0,
+                                                                    }}
+                                                                    animate={{
+                                                                        opacity: 1,
+                                                                    }}
+                                                                    exit={{
+                                                                        opacity: 0,
+                                                                    }}
+                                                                    transition={{
+                                                                        duration: 0.25,
+                                                                    }}
+                                                                />
+                                                            )}
+                                                    </AnimatePresence>
+                                                </div>
+                                            </motion.article>
+                                        </Link>
+                                    );
+                                })}
+                            </motion.div>
+                        ) : (
+                            // LIST VIEW
+                            <motion.div
+                                key="list"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                transition={{ duration: 0.25 }}
+                                className="space-y-4 w-full"
+                            >
+                                <div className="grid grid-cols-2 sm:grid-cols-10 w-full gap-4 sm:gap-6 items-baseline text-[10px] md:text-sm font-body px-1">
+                                    <div className="col-span-1 sm:col-span-3">
+                                        Project
+                                    </div>
+                                    <div className="col-span-1 sm:col-span-4">
+                                        Description
+                                    </div>
+                                    <div className="hidden sm:block sm:col-span-2">
+                                        Tools used
+                                    </div>
+                                    <div className="hidden sm:block text-right">
+                                        Year
+                                    </div>
+                                </div>
+                                <div className=" ">
+                                    {projects.map((project) => {
+                                        const isHovered =
+                                            hoveredId === project.id;
+                                        const dimmed = hoveredId && !isHovered;
+                                        return (
+                                            <Link
+                                                href={project.slug}
+                                                key={project.id}
+                                            >
+                                                <motion.div
+                                                    className="grid grid-cols-2 sm:grid-cols-10 w-full items-start gap-4 sm:gap-6 py-5 font-heading text-sm md:text-3xl text-slate-900"
+                                                    onMouseEnter={() =>
+                                                        setHoveredId(project.id)
+                                                    }
+                                                    onMouseLeave={() =>
+                                                        setHoveredId(null)
+                                                    }
+                                                    style={{
+                                                        opacity: dimmed
+                                                            ? 0.2
+                                                            : 1,
+                                                    }}
+                                                    animate={{
+                                                        scale: isHovered
+                                                            ? 1.01
+                                                            : 1,
+                                                    }}
+                                                    transition={{
+                                                        type: "spring",
+                                                        stiffness: 260,
+                                                        damping: 22,
+                                                    }}
+                                                >
+                                                    <div className="min-w-0 text-xl md:text-3xl col-span-1 sm:col-span-3">
+                                                        {project.name}
+                                                    </div>
+                                                    <div className="min-w-0 col-span-1 sm:col-span-4">
+                                                        {project.description}
+                                                    </div>
+                                                    <div className="hidden sm:block min-w-0 sm:col-span-2 text-xs md:text-lg">
+                                                        {project.tools}
+                                                    </div>
+                                                    <div className="hidden sm:block whitespace-nowrap text-xs md:text-lg text-right">
+                                                        {project.year}
+                                                    </div>
+                                                </motion.div>
+                                            </Link>
+                                        );
+                                    })}
+                                </div>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
+                </div>
+            </div>
+        </>
+    );
 }
