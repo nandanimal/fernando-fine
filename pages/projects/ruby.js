@@ -8,7 +8,7 @@ const project = {
     tools: "Ableton Live, Adobe CC, Lightkey ...",
     year: "2023 –",
     slug: "/ruby",
-    hero: "/slide.webp",
+    hero: "/Slide.webp",
     summary:
         "A satirical calculator that posts every result to a social feed, blurring utility with performative sharing.",
     sections: [
