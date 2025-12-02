@@ -18,7 +18,7 @@ const project = {
         },
         {
             heading: "Role",
-            body: "I function as a co-writer and co-producer, as well as the 'creative director' of all things visual",
+            body: "I function as a co-writer and co-producer, as well as the 'creative director' of all things visual.",
         },
     ],
 };

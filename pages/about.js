@@ -25,21 +25,21 @@ const about = () => {
                     disciplinary design engineer working at the intersection of
                     art and technology. As the founder of{" "}
                     <Link
-                        href="/finetooth"
+                        href="/projects/finetooth"
                         className="text-blue-500 hover:opacity-80"
                     >
                         Finetooth
                     </Link>
                     , I work with clients from a variety of industries to create
                     left-of-center applications, spanning visual design and
-                    branding to full stack web development. My focus has always
+                    branding, full stack web development, and AI-augmented experiences. My focus has always
                     been to help create evocative digital experiences that are
                     as functional as they are unique.{" "}
                 </p>
                 <p>
                     Before starting Finetooth, I worked in{" "}
                     <Link
-                        href="/miro"
+                        href="/projects/miro"
                         className="text-blue-500 hover:opacity-80"
                     >
                         biotech and pharmaceuticals

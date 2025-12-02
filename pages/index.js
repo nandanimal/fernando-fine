@@ -60,13 +60,12 @@ export default function Home() {
                                     passion for emerging technologies.
                                 </div>
                                 <p className="font-body text-base">
-                                    Currently running{" "}
                                     <a
                                         href="www.finetooth.dev"
                                         target="_blank"
                                         className="text-blue-500"
                                     >
-                                        finetooth.dev
+                                        More about me →
                                     </a>
                                 </p>
                             </div>
@@ -108,7 +107,7 @@ export default function Home() {
                                 if (!project) return null;
                                 return (
                                     <>
-                                        <div className="flex flex-row justify-between">
+                                        <div className="flex flex-row justify-between mt-8">
                                             <div>{project.name}</div>
                                             <div>{project.id}</div>
                                         </div>

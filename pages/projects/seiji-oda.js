@@ -96,7 +96,7 @@ export default function ProjectDetailPage() {
                                     'Daft Hands'. In it, someone twists and
                                     flips their hands to reveal lyrics
                                     synchronized to Daft Punk's "Harder, Better,
-                                    Faster, Stronger". I wondered if there was a
+                                    Faster, Stronger." I wondered if there was a
                                     way to create an interactive version of this
                                     video, where a user could simply mimic the
                                     hand shapes and trigger the respective
@@ -189,7 +189,6 @@ export default function ProjectDetailPage() {
                         <video src="/p_vid_1_v3.webm" controls />
                     </section>
                     <ProjectPager currentSlug={project.slug} />
-
                 </main>
             </article>
         </>

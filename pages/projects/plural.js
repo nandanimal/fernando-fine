@@ -167,7 +167,11 @@ export default function ProjectDetailPage() {
                             AI ‘gym’: a personalized, interactive version of
                             Plural’s existing workflows that users could engage
                             on demand, made possible by an LLM trained on Plural
-                            data.
+                            data. We then created 10 different AI Agents, backed by both
+                            OpenAI and Claude models, that were designed to interact with
+                            people to help them learn to build trust, navigate
+                            difficult conversations, and cultivate expansive
+                            moods.
                         </p>
 
                         <div className="flex flex-row gap-2">

@@ -89,7 +89,7 @@ export default function ProjectDetailPage() {
                     <section className="space-y-6">
                         <p>
                             Like many others, I struggle with screen time on my
-                            phone The problem I saw was that current social
+                            phone. The problem I saw was that current social
                             media has almost been optimized for addiction, and
                             as a result it’s become increasingly difficult for
                             users to do what early social media set out to
@@ -103,14 +103,14 @@ export default function ProjectDetailPage() {
 
                         <ol>
                             <li>
-                                To call out the commercialization of social
+                                1. To call out the commercialization of social
                                 media
                             </li>{" "}
                             <li>
-                                To evoke the absurdity of pre-algorithm social
-                                media platforms
+                                2. To evoke the absurdity of pre-algorithm
+                                social media platforms
                             </li>{" "}
-                            <li> To actually have fun with my friends</li>
+                            <li>3. To actually have fun with my friends</li>
                         </ol>
 
                         <h2 className="md:text-6xl text-3xl mt-16">
@@ -177,7 +177,7 @@ export default function ProjectDetailPage() {
                             best and/or insanely addictive distractions at
                             worst. Calcul8r proudly accomplishes neither,
                             instead offering a ‘digital rest stop’ for you and
-                            your friends to share a laugh. 
+                            your friends to share a laugh.
                         </p>
 
                         <p>
@@ -187,11 +187,11 @@ export default function ProjectDetailPage() {
                         </p>
                         <ol>
                             <li>
-                                an end of year wrapped that shows your most
+                                1. an end of year wrapped that shows your most
                                 common calculations,
                             </li>{" "}
-                            <li>adding stories (because obviously),</li>{" "}
-                            <li> and maybe even paywall-gating the number 8</li>
+                            <li>2. adding stories (because obviously), and</li>{" "}
+                            <li>3. maybe even paywall-gating the number 8</li>
                         </ol>
 
                         <ProjectMedia src="/pro.png" alt="Calcul8er pro" />
