@@ -60,13 +60,13 @@ export default function Home() {
                                     passion for emerging technologies.
                                 </div>
                                 <p className="font-body text-base">
-                                    <a
-                                        href="www.finetooth.dev"
+                                    <Link
+                                        href="/about"
                                         target="_blank"
                                         className="text-blue-500"
                                     >
                                         More about me →
-                                    </a>
+                                    </Link>
                                 </p>
                             </div>
                         </div>
