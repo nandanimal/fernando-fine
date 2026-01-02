@@ -12,7 +12,7 @@ import { projects } from "@/data/projects";
 
 export default function Home() {
     const pageRef = useRef(null);
-    const [viewMode, setViewMode] = useState("gallery");
+    const [viewMode, setViewMode] = useState("list");
     const [hoveredId, setHoveredId] = useState(null);
     const { scrollYProgress } = useScroll();
     const blurValue = useTransform(
@@ -62,7 +62,6 @@ export default function Home() {
                                 <p className="font-body text-base">
                                     <Link
                                         href="/about"
-                                        target="_blank"
                                         className="text-blue-500"
                                     >
                                         More about me →
