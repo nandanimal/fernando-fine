@@ -31,7 +31,7 @@ const about = () => {
                         Finetooth
                     </Link>
                     , I work with clients from a variety of industries to create
-                    left-of-center applications, spanning visual design and
+                    offbeats applications, spanning visual design and
                     branding, full stack web development, and AI-augmented experiences. My focus has always
                     been to help create evocative digital experiences that are
                     as functional as they are unique.{" "}
