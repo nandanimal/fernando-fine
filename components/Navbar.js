@@ -19,12 +19,6 @@ const Navbar = () => {
                         >
                             About
                         </Link>
-                        <Link
-                            href="/projects"
-                            className="px-4 py-2 rounded-md backdrop-blur-md bg-white/80"
-                        >
-                            Projects
-                        </Link>
                     </div>
                 </div>
             </div>
