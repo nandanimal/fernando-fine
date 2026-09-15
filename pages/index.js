@@ -1,25 +1,13 @@
 "use client";
 import Head from "next/head";
-import {
-    motion,
-    useScroll,
-    useTransform,
-    AnimatePresence,
-} from "framer-motion";
-import { useRef, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
 import Link from "next/link";
 import { projects } from "@/data/projects";
 
 export default function Home() {
-    const pageRef = useRef(null);
-    const [viewMode, setViewMode] = useState("list");
+    const [viewMode, setViewMode] = useState("gallery");
     const [hoveredId, setHoveredId] = useState(null);
-    const { scrollYProgress } = useScroll();
-    const blurValue = useTransform(
-        scrollYProgress,
-        [0, 0.35, 0.5],
-        ["blur(0px)", "blur(6px)", "blur(16px)"]
-    );
 
     return (
         <>
@@ -31,63 +19,7 @@ export default function Home() {
                 />
                 <meta property="og:image" content="/og-image.png" />
             </Head>
-            <div ref={pageRef}>
-                {/* BLUR THIS */}
-                <motion.div
-                    className="blurb-container min-h-screen w-full fixed top-0 -z-10 flex items-center justify-center"
-                    style={{ filter: blurValue }}
-                >
-                    <div className="blurb-itself grid grid-rows-2 gap-8 max-w-3xl mx-auto">
-                        {/* Top row */}
-                        <div className="row grid-cols-2 grid gap-16">
-                            <div className="img-container flex justify-end items-end row-span-1">
-                                <img
-                                    src="/fern.png"
-                                    alt="fernando fine"
-                                    className="max-w-[72px] rounded-sm"
-                                />
-                            </div>
-                            <div className="spacer row-span-1"></div>
-                        </div>
-                        {/* Bottom row */}
-                        <div className="row grid grid-cols-2 gap-16">
-                            <div className="name font-heading text-2xl row-span-1 flex justify-end">
-                                Fernando Fine
-                            </div>
-                            <div className="name  text-2xl flex flex-col gap-4">
-                                <div className="font-heading">
-                                    Cross-disciplinary design engineer with a
-                                    passion for emerging technologies.
-                                </div>
-                                <p className="font-body text-base">
-                                    <Link
-                                        href="/about"
-                                        className="text-blue-500"
-                                    >
-                                        More about me →
-                                    </Link>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* scroll prompt */}
-                    <motion.div
-                        className="absolute bottom-8"
-                        initial={{ opacity: 0, y: 16 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{
-                            delay: 1,
-                            duration: 1,
-                            ease: "easeInOut",
-                        }}
-                    >
-                        <div className="font-heading text-3xl">
-                            Scroll to discover projects
-                        </div>
-                    </motion.div>
-                </motion.div>
-
+            <div>
                 {/* Grid view background */}
                 <AnimatePresence>
                     {viewMode === "gallery" && hoveredId && (
@@ -125,9 +57,9 @@ export default function Home() {
                 </AnimatePresence>
 
                 {/* PROJECTS */}
-                <div className="projects-container relative mt-[100svh] min-h-screen w-full z-10 px-6 py-16 space-y-8">
+                <div className="projects-container relative min-h-screen w-full z-10 px-6 py-16 pt-28 space-y-8">
                     {/* TOGGLE */}
-                    <div className="flex items-center flex items-end w-full gap-8 font-heading md:text-3xl">
+                    <div className="flex items-center w-full gap-8 font-heading md:text-3xl">
                         <button
                             className={`rounded-sm  cursor-pointer hover:opacity-80 transition ${
                                 viewMode === "gallery"
